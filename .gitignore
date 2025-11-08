@@ -1,0 +1,12 @@
+### PHPUnit
+phpunit.xml.dist
+.phpunit.result.cache
+
+# Logs
+logs
+*.log
+
+# Composer
+composer.phar
+/composer.lock
+/vendor
