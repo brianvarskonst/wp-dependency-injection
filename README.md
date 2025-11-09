@@ -4,18 +4,18 @@ A professional Symfony Dependency Injection Container integration for WordPress,
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue)](https://www.php.net/)
 [![Symfony](https://img.shields.io/badge/Symfony-7.0%2B-black)](https://symfony.com/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/license-%20%20GNU%20GPLv3%20-green)](LICENSE)
 
 ## Features
 
-✅ **Full Symfony DI Container** - Complete container implementation with autowiring and autoconfiguration
-✅ **Bundle System** - Symfony-style bundle architecture for modular plugin development
-✅ **Environment-Aware** - Automatic environment detection (dev/stage/prod) with separate container caching
-✅ **Cross-Bundle DI** - Share services between plugins seamlessly
-✅ **Root Configuration** - Centralized configuration in `config/` directory
-✅ **Translation Support** - XLIFF translation resources per bundle
-✅ **WPStarter Compatible** - Works out-of-the-box with WPStarter for environment management
-✅ **Enterprise Standards** - KISS, DRY, SOLID principles with PSR-4 autoloading
+* ✅ **Full Symfony DI Container** - Complete container implementation with autowiring and autoconfiguration
+* ✅ **Bundle System** - Symfony-style bundle architecture for modular plugin development
+* ✅ **Environment-Aware** - Automatic environment detection (dev/stage/prod) with separate container caching
+* ✅ **Cross-Bundle DI** - Share services between plugins seamlessly
+* ✅ **Root Configuration** - Centralized configuration in `config/` directory
+* ✅ **Translation Support** - XLIFF translation resources per bundle
+* ✅ **WPStarter Compatible** - Works out-of-the-box with WPStarter for environment management
+* ✅ **Enterprise Standards** - KISS, DRY, SOLID principles with PSR-4 autoloading
 
 ## Requirements
 
