@@ -6,6 +6,7 @@ namespace Brianvarskonst\WordPress\DependencyInjection;
 
 use Brianvarskonst\WordPress\DependencyInjection\Bundle\BundleInterface;
 use Brianvarskonst\WordPress\DependencyInjection\Bundle\BundleLoader;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -94,7 +95,7 @@ class Kernel
 
         $this->loadEnvironmentVariablesAsParameters($containerBuilder);
 
-        $containerBuilder->registerForAutoconfiguration(\Psr\Log\LoggerInterface::class)
+        $containerBuilder->registerForAutoconfiguration(LoggerInterface::class)
             ->addTag('monolog.logger');
     }
 

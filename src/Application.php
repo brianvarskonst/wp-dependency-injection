@@ -45,15 +45,17 @@ class Application
             $env
         );
 
-        $bundles = $this->discoverBundles();
-        $loader->registerBundles($bundles);
+        $loader->registerBundles(
+            $this->discoverBundles()
+        );
 
         $this->container = $loader->getContainer();
     }
 
     private function discoverBundles(): array
     {
-        $bundles = apply_filters('symfony_register_bundles', []);
+        $bundles = [];
+        $bundles = apply_filters('symfony_register_bundles', $bundles);
 
         if (!is_array($bundles)) {
             return [];
@@ -62,14 +64,17 @@ class Application
         return $bundles;
     }
 
-    private function registerHooks(): void
-    {
-        add_action('init', [$this, 'onWordPressInit'], 1);
-    }
-
     private function register(): void
     {
+        add_action('plugins_loaded', function() {
+            $this->initialize();
+
+            do_action('symfony_before_container_build');
+        }, 5);
+
         add_action('init', function() {
+            $this->initialize();
+
             do_action(self::CONTAINER_LOADED, $this->container);
         }, 1);
     }

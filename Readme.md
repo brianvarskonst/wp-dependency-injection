@@ -61,18 +61,12 @@ App\PluginB\Service\NotificationService:
 
 ### 3. Configuration from Root
 Configure plugins from root `config/packages/`:
+
 ```yaml
 # config/packages/example_plugin.yaml
 example_plugin:
     api_key: '%env(API_KEY)%'
     debug_mode: false
-```
-
-### 4. Translation Resources
-Bundles can provide translations:
-```
-Resources/translations/messages.en.xliff
-Resources/translations/messages.de.xliff
 ```
 
 ### 5. Autowiring Support
@@ -116,7 +110,8 @@ class MyService {
 
 Bundle configuration is validated via Configuration class:
 ```php
-final class Configuration implements ConfigurationInterface {
+final class Configuration implements ConfigurationInterface
+{
     public function getConfigTreeBuilder(): TreeBuilder {
         // Define valid config structure
     }
