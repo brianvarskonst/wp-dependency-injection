@@ -4,7 +4,7 @@ A professional Symfony Dependency Injection Container integration for WordPress,
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue)](https://www.php.net/)
 [![Symfony](https://img.shields.io/badge/Symfony-7.0%2B-black)](https://symfony.com/)
-[![License](https://img.shields.io/badge/license-%20%20GNU%20GPLv3%20-green)](LICENSE)
+[![License](https://img.shields.io/badge/license-GNU_GPLv2-green)](LICENSE)
 
 ## Features
 
