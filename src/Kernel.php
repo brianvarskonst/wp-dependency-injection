@@ -53,6 +53,7 @@ class Kernel
         if ($this->shouldUseCachedContainer($cachedContainerFile)) {
             self::$container = $this->loadCachedContainer($cachedContainerFile);
             $this->bundleLoader->bootBundles();
+
             return self::$container;
         }
 
@@ -221,7 +222,7 @@ class Kernel
         $allowedPrefixes = ['WORDPRESS_', 'WP_', 'DB_', 'APP_'];
 
         foreach ($envVars as $key => $value) {
-            if (!$this->shouldIncludeEnvironmentVariable($key, $excludedPrefixes, $allowedPrefixes)) {
+            if (!$this->shouldIncludeEnvironmentVariable((string) $key, $excludedPrefixes, $allowedPrefixes)) {
                 continue;
             }
 

@@ -12,7 +12,6 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 final class BundleLoader
 {
     private array $bundles = [];
-
     private string $projectRoot;
 
     public function __construct(string $projectRoot)
@@ -126,4 +125,3 @@ final class BundleLoader
         $container->setParameter($bundleName . '.namespace', $bundle->getNamespace());
     }
 }
-

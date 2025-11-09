@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Brianvarskonst\WordPress\DependencyInjection;
 
+use Brianvarskonst\WordPress\DependencyInjection\Loader\BundlesConfigLoader;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Application
@@ -37,33 +38,39 @@ class Application
     private function initialize(): void
     {
         $env = $this->resolveEnvironment();
+        $root = $this->resolveProjectRoot();
 
         $loader = new Kernel(
-            $this->resolveProjectRoot(),
+            $root,
             $this->resolveCacheDirectory($env),
             $this->isDebugMode(),
             $env
         );
 
         $loader->registerBundles(
-            $this->discoverBundles()
+            $this->discoverBundles(
+                $this->resolveProjectRoot(),
+                $env
+            )
         );
 
         $this->container = $loader->getContainer();
     }
 
-    private function discoverBundles(): array
+    private function discoverBundles(string $projectRoot, string $environment): array
     {
-        $bundles = [];
-        $bundles = apply_filters('symfony_register_bundles', $bundles);
+        $configLoader = new BundlesConfigLoader($projectRoot, $environment);
+        $configBundles = $configLoader->loadBundles();
 
-        if (!is_array($bundles)) {
-            return [];
+        $filterBundles = [];
+        $filterBundles = apply_filters('symfony_register_bundles', $filterBundles);
+
+        if (!is_array($filterBundles)) {
+            $filterBundles = [];
         }
 
-        return $bundles;
+        return array_merge($configBundles, $filterBundles);
     }
-
     private function register(): void
     {
         add_action('plugins_loaded', function() {
