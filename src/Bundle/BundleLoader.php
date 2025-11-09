@@ -116,8 +116,11 @@ final class BundleLoader
         }
     }
 
-    private function registerBundleParameters(ContainerBuilder $container, BundleInterface $bundle): void
-    {
+    private function registerBundleParameters(
+        ContainerBuilder $container,
+        BundleInterface $bundle
+    ): void {
+
         $bundleName = $bundle->getName();
         $bundlePath = $bundle->getPath();
 

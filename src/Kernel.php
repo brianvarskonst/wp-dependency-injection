@@ -64,11 +64,6 @@ class Kernel
         return self::$container;
     }
 
-    public function registerBundle(BundleInterface $bundle): void
-    {
-        $this->bundleLoader->registerBundle($bundle);
-    }
-
     public function registerBundles(array $bundles): void
     {
         $this->bundleLoader->registerBundles($bundles);
@@ -231,7 +226,7 @@ class Kernel
             }
 
             $sanitizedValue = $this->sanitizeParameterValue($value);
-            $paramName = 'env.' . strtolower($key);
+            $paramName = 'env.' . strtolower((string) $key);
             $containerBuilder->setParameter($paramName, $sanitizedValue);
         }
     }

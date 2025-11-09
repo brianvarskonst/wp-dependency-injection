@@ -39,6 +39,7 @@ class Application
     {
         $env = $this->resolveEnvironment();
         $root = $this->resolveProjectRoot();
+        $base = dirname($root);
 
         $loader = new Kernel(
             $root,
@@ -49,7 +50,7 @@ class Application
 
         $loader->registerBundles(
             $this->discoverBundles(
-                $this->resolveProjectRoot(),
+                $base,
                 $env
             )
         );
